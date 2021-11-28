@@ -1,0 +1,25 @@
+import 'package:intl/intl.dart';
+
+class Apod {
+  final DateTime date;
+  final String explanation;
+  final String title;
+  final String url;
+
+  String get dateFormatted => DateFormat('yyyy-MM-dd').format(date);
+
+  Apod(
+      {required this.date,
+      required this.explanation,
+      required this.title,
+      required this.url});
+
+  factory Apod.fromJson(Map json) {
+    return Apod(
+      date: json['date'],
+      explanation: json['explanation'],
+      title: json['title'],
+      url: json['url'],
+    );
+  }
+}
