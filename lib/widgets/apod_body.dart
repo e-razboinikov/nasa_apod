@@ -1,35 +1,31 @@
 import 'package:flutter/material.dart';
 
-import 'package:intl/intl.dart';
-import 'package:shimmer/shimmer.dart';
-
 import '../api/apod_api.dart';
 
 class ApodBody extends StatelessWidget {
   final DateTime selectedDate;
   const ApodBody({required this.selectedDate, key}) : super(key: key);
 
-  Widget _buildImage(BuildContext context) {
+  Widget _buildImage(BuildContext context, double displayHeight) {
     return FutureBuilder<String>(
       future: fetchImage(selectedDate),
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return SizedBox(
-            height: 300.0,
+            height: displayHeight * 0.5,
+            width: double.infinity,
             child: Image.network(
               snapshot.data!,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           );
         } else {
-          return Shimmer.fromColors(
-            child: Container(
-              height: 300.0,
-              width: double.infinity,
-              color: Colors.white,
+          return SizedBox(
+            height: displayHeight * 0.5,
+            width: double.infinity,
+            child: const Center(
+              child: CircularProgressIndicator(),
             ),
-            baseColor: Colors.grey,
-            highlightColor: Colors.grey.withOpacity(0.5),
           );
         }
       },
@@ -38,31 +34,23 @@ class ApodBody extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context) {
     return FutureBuilder<String>(
-      future: fetchTitle(selectedDate),
-      builder: (ctx, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return SizedBox(
-            height: 20.0,
-            width: double.infinity,
-            child: Text(
-              snapshot.data!,
-              style: const TextStyle(color: Colors.white),
-              textAlign: TextAlign.end,
-            ),
-          );
-        } else {
-          return Shimmer.fromColors(
-            child: Container(
-              height: 20.0,
+        future: fetchTitle(selectedDate),
+        builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Container(
+              padding: const EdgeInsets.all(10.0),
+              color: Colors.black45,
               width: double.infinity,
-              color: Colors.white,
-            ),
-            baseColor: Colors.grey,
-            highlightColor: Colors.grey.withOpacity(0.5),
-          );
-        }
-      },
-    );
+              child: Text(
+                snapshot.data!,
+                style: Theme.of(context).textTheme.headline6,
+                textAlign: TextAlign.end,
+              ),
+            );
+          } else {
+            return const LinearProgressIndicator();
+          }
+        });
   }
 
   Widget _buildExplanation(BuildContext context) {
@@ -70,7 +58,8 @@ class ApodBody extends StatelessWidget {
       future: fetchExplanation(selectedDate),
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          return Center(
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
             child: Text(snapshot.data!),
           );
         } else {
@@ -82,18 +71,31 @@ class ApodBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        SizedBox(
-          height: 300.0,
-          child: GridTile(
-            child: _buildImage(context),
-            footer:
-                Container(color: Colors.black87, child: _buildTitle(context)),
+    final _displayHeight = MediaQuery.of(context).size.height;
+    return SizedBox(
+      height: _displayHeight,
+      child: Column(
+        children: [
+          SizedBox(
+            height: _displayHeight * 0.5,
+            child: Stack(
+              children: [
+                _buildImage(context, _displayHeight),
+                Align(
+                  child: _buildTitle(context),
+                  alignment: Alignment.bottomRight,
+                ),
+              ],
+            ),
           ),
-        ),
-        _buildExplanation(context),
-      ],
+          SizedBox(
+            height: _displayHeight * 0.4,
+            child: SingleChildScrollView(
+              child: _buildExplanation(context),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

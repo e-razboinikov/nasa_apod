@@ -17,21 +17,32 @@ class _ApodScreenState extends State<ApodScreen> {
   Widget build(BuildContext context) {
     void _showDatePicker() {
       showDatePicker(
+        builder: (context, child) {
+          return Theme(
+            data: ThemeData.dark(),
+            child: child!,
+          );
+        },
+        fieldHintText: 'MM-DD-YYYY',
         context: context,
         initialDate: _selectedDate,
         firstDate: DateTime.parse('1995-06-16'),
         lastDate: DateTime.now(),
       ).then((value) {
-        setState(() {
-          _selectedDate = value ?? _selectedDate;
-        });
+        if (value == _selectedDate || value == null) {
+          return;
+        } else {
+          setState(() {
+            _selectedDate = DateTime.parse(value.toString());
+          });
+        }
       });
     }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          DateFormat('dd.MM.yyyy').format(_selectedDate),
+          DateFormat('EEE, MMMM dd, yyyy').format(_selectedDate),
         ),
         actions: [
           IconButton(
@@ -42,7 +53,10 @@ class _ApodScreenState extends State<ApodScreen> {
           ),
         ],
       ),
-      body: ApodBody(selectedDate: _selectedDate),
+      body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: ApodBody(selectedDate: _selectedDate),
+      ),
     );
   }
 }
