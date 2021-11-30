@@ -16,7 +16,7 @@ class Apod {
 
   factory Apod.fromJson(Map json) {
     return Apod(
-      date: json['date'],
+      date: DateTime.parse(json['date']),
       explanation: json['explanation'],
       title: json['title'],
       url: json['url'],
