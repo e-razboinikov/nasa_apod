@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,14 +19,27 @@ class ApodProvider with ChangeNotifier {
     fetchApod();
   }
 
-  void updateSelectedDate(DateTime newDate) {
+  Future<void> updateSelectedDate(DateTime newDate) async {
     if (newDate == _selectedDate || newDate == null) {
       return;
     } else {
       _selectedDate = DateTime.parse(newDate.toString());
-      fetchApod();
+      await fetchApod();
       notifyListeners();
     }
+  }
+
+  Future<void> setRandomDate() async {
+    final startDate = DateTime(1995, 6, 16);
+    final endDate = DateTime.now();
+    final randomRange = DateTimeRange(start: startDate, end: endDate);
+    await updateSelectedDate(
+      DateTime(
+        startDate.year,
+        startDate.month,
+        startDate.day + Random().nextInt(randomRange.duration.inDays),
+      ),
+    );
   }
 
   Future<void> fetchApod() async {

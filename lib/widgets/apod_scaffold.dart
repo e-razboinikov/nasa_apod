@@ -37,6 +37,12 @@ class ApodScaffold extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            icon: const Icon(
+              Icons.change_circle_outlined,
+            ),
+            onPressed: apodData.setRandomDate,
+          ),
+          IconButton(
             onPressed: () => _showDatePicker(),
             icon: const Icon(
               Icons.calendar_today_outlined,
