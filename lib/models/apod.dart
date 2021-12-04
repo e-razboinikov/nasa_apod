@@ -5,14 +5,17 @@ class Apod {
   final String explanation;
   final String title;
   final String url;
+  final String hdurl;
 
   String get dateFormatted => DateFormat('yyyy-MM-dd').format(date);
 
-  Apod(
-      {required this.date,
-      required this.explanation,
-      required this.title,
-      required this.url});
+  Apod({
+    required this.date,
+    required this.explanation,
+    required this.title,
+    required this.url,
+    required this.hdurl,
+  });
 
   factory Apod.fromJson(Map json) {
     return Apod(
@@ -20,6 +23,7 @@ class Apod {
       explanation: json['explanation'],
       title: json['title'],
       url: json['url'],
+      hdurl: json['hdurl'],
     );
   }
 }

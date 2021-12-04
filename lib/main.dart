@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import './providers/apod_provider.dart';
 import './screens/apod_screen.dart';
+import './screens/full_screen_image_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         home: const ApodScreen(),
+        routes: {
+          FullScreenImage.routeName: (_) => const FullScreenImage(),
+        },
       ),
     );
   }

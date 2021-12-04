@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import '../providers/apod_provider.dart';
+import '../screens/full_screen_image_screen.dart';
 
 class ApodScaffold extends StatelessWidget {
   const ApodScaffold({Key? key}) : super(key: key);
@@ -83,9 +84,13 @@ class ApodScaffold extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image: apodData.apod.url,
+                      GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(FullScreenImage.routeName),
+                        child: FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: apodData.apod.url,
+                        ),
                       ),
                       Container(
                         padding: const EdgeInsets.all(10.0),
