@@ -95,7 +95,9 @@ class ApodScaffold extends StatelessWidget {
                 ],
               )),
             ),
-            panel: Text(apodData.apod.explanation),
+            panel: SingleChildScrollView(
+              child: Text(apodData.apod.explanation),
+            ),
             body: ListView(
               children: [
                 Column(
