@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../providers/apod_provider.dart';
 import '../screens/full_screen_image_screen.dart';
@@ -78,39 +79,53 @@ class ApodScaffold extends StatelessWidget {
         },
         child: RefreshIndicator(
           onRefresh: apodData.fetchApod,
-          child: ListView(
-            children: [
-              Column(
-                children: [
-                  Stack(
-                    children: [
-                      GestureDetector(
-                        onTap: () => Navigator.of(context)
-                            .pushNamed(FullScreenImage.routeName),
-                        child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: apodData.apod.url,
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10.0),
-                        color: Colors.black45,
-                        width: double.infinity,
-                        child: Text(
-                          apodData.apod.title,
-                          style: Theme.of(context).textTheme.headline5,
-                          textAlign: TextAlign.end,
-                        ),
-                      ),
-                    ],
+          child: SlidingUpPanel(
+            color: Colors.black,
+            collapsed: Container(
+              color: Colors.black,
+              child: Center(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(
+                    Icons.arrow_upward_outlined,
+                    color: Colors.white,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(apodData.apod.explanation),
-                  ),
+                  Text('Explanation'),
                 ],
-              ),
-            ],
+              )),
+            ),
+            panel: Text(apodData.apod.explanation),
+            body: ListView(
+              children: [
+                Column(
+                  children: [
+                    Stack(
+                      children: [
+                        GestureDetector(
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(FullScreenImage.routeName),
+                          child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: apodData.apod.url,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(10.0),
+                          color: Colors.black45,
+                          width: double.infinity,
+                          child: Text(
+                            apodData.apod.title,
+                            style: Theme.of(context).textTheme.headline5,
+                            textAlign: TextAlign.end,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
