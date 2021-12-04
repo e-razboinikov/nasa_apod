@@ -50,37 +50,63 @@ class ApodScaffold extends StatelessWidget {
           ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: apodData.fetchApod,
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                Stack(
-                  children: [
-                    FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: apodData.apod.url,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10.0),
-                      color: Colors.black45,
-                      width: double.infinity,
-                      child: Text(
-                        apodData.apod.title,
-                        style: Theme.of(context).textTheme.headline5,
-                        textAlign: TextAlign.end,
+      body: Dismissible(
+        key: ValueKey(DateTime.now()),
+        direction: (apodData.selectedDate.day == DateTime.now().day)
+            ? DismissDirection.startToEnd
+            : DismissDirection.horizontal,
+        onDismissed: (direction) {
+          final selectedDate = apodData.selectedDate;
+          if (direction == DismissDirection.startToEnd) {
+            apodData.updateSelectedDate(
+              DateTime(
+                selectedDate.year,
+                selectedDate.month,
+                selectedDate.day - 1,
+              ),
+            );
+          } else if (direction == DismissDirection.endToStart) {
+            apodData.updateSelectedDate(
+              DateTime(
+                selectedDate.year,
+                selectedDate.month,
+                selectedDate.day + 1,
+              ),
+            );
+          }
+        },
+        child: RefreshIndicator(
+          onRefresh: apodData.fetchApod,
+          child: ListView(
+            children: [
+              Column(
+                children: [
+                  Stack(
+                    children: [
+                      FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: apodData.apod.url,
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(apodData.apod.explanation),
-                ),
-              ],
-            ),
-          ],
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        color: Colors.black45,
+                        width: double.infinity,
+                        child: Text(
+                          apodData.apod.title,
+                          style: Theme.of(context).textTheme.headline5,
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(apodData.apod.explanation),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
