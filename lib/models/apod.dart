@@ -23,7 +23,7 @@ class Apod {
       explanation: json['explanation'],
       title: json['title'],
       url: json['url'],
-      hdurl: json['hdurl'],
+      hdurl: json['hdurl'] ?? '',
     );
   }
 }

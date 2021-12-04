@@ -12,6 +12,7 @@ class ApodProvider with ChangeNotifier {
   var _selectedDate = DateTime.now();
   late Apod apod;
   var isLoading = false;
+  var isVideo = false;
 
   DateTime get selectedDate => _selectedDate;
 
@@ -52,6 +53,10 @@ class ApodProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as Map;
       apod = Apod.fromJson(json);
+      if (apod.url.contains('youtube')) {
+        isVideo = true;
+        notifyListeners();
+      }
       notifyListeners();
     } else {
       throw ('Cant fetch APOD');

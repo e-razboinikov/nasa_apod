@@ -14,6 +14,33 @@ class ApodScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final apodData = Provider.of<ApodProvider>(context);
 
+    Widget imageContent = Stack(
+      children: [
+        GestureDetector(
+          onTap: () =>
+              Navigator.of(context).pushNamed(FullScreenImage.routeName),
+          child: FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: apodData.apod.url,
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(10.0),
+          color: Colors.black45,
+          width: double.infinity,
+          child: Text(
+            apodData.apod.title,
+            style: Theme.of(context).textTheme.headline5,
+            textAlign: TextAlign.end,
+          ),
+        ),
+      ],
+    );
+
+    Widget videoContent = Center(
+      child: Text(apodData.apod.url),
+    );
+
     void _showDatePicker() {
       showDatePicker(
         builder: (context, child) {
@@ -98,36 +125,7 @@ class ApodScaffold extends StatelessWidget {
             panel: SingleChildScrollView(
               child: Text(apodData.apod.explanation),
             ),
-            body: ListView(
-              children: [
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        GestureDetector(
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(FullScreenImage.routeName),
-                          child: FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image: apodData.apod.url,
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          color: Colors.black45,
-                          width: double.infinity,
-                          child: Text(
-                            apodData.apod.title,
-                            style: Theme.of(context).textTheme.headline5,
-                            textAlign: TextAlign.end,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            body: apodData.isVideo ? videoContent : imageContent,
           ),
         ),
       ),
