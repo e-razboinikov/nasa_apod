@@ -18,10 +18,11 @@ class FullScreenImage extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(
-                  Provider.of<ApodProvider>(context, listen: false).apod.hdurl,
-                ),
-                fit: BoxFit.contain),
+              image: NetworkImage(
+                Provider.of<ApodProvider>(context, listen: false).apod.hdurl,
+              ),
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),

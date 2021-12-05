@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../providers/apod_provider.dart';
@@ -19,9 +18,19 @@ class ApodScaffold extends StatelessWidget {
         GestureDetector(
           onTap: () =>
               Navigator.of(context).pushNamed(FullScreenImage.routeName),
-          child: FadeInImage.memoryNetwork(
-            placeholder: kTransparentImage,
-            image: apodData.apod.url,
+          child: Image.network(
+            apodData.apod.url,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              }
+              return LinearProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
+                    : null,
+              );
+            },
           ),
         ),
         Container(
@@ -62,7 +71,7 @@ class ApodScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          DateFormat('EEE, MMMM dd, yyyy').format(apodData.selectedDate),
+          apodData.apod.dateForBar,
         ),
         actions: [
           IconButton(

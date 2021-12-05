@@ -45,6 +45,7 @@ class ApodProvider with ChangeNotifier {
 
   Future<void> fetchApod() async {
     isLoading = true;
+    isVideo = false;
     notifyListeners();
     final dateFormatted = DateFormat('yyyy-MM-dd').format(_selectedDate);
     final apodUri = Uri.parse(

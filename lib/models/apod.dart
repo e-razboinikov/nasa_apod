@@ -7,6 +7,8 @@ class Apod {
   final String url;
   final String hdurl;
 
+  String get dateForBar => DateFormat('EEE, MMMM dd, yyyy').format(date);
+
   String get dateFormatted => DateFormat('yyyy-MM-dd').format(date);
 
   Apod({
