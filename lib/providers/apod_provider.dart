@@ -21,7 +21,7 @@ class ApodProvider with ChangeNotifier {
   }
 
   Future<void> updateSelectedDate(DateTime newDate) async {
-    if (newDate == _selectedDate || newDate == null) {
+    if (newDate == _selectedDate) {
       return;
     } else {
       _selectedDate = DateTime.parse(newDate.toString());
