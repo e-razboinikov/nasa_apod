@@ -10,7 +10,7 @@ class VideoContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final apodData = Provider.of<ApodProvider>(context);
     return Center(
-      child: Text(apodData.apod.url),
+      child: Text(apodData.url),
     );
   }
 }

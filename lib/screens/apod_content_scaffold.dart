@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../providers/apod_provider.dart';
-import './image_content.dart';
-import './video_content.dart';
+import '../widgets/image_content.dart';
+import '../widgets/video_content.dart';
 
 class ApodScaffold extends StatelessWidget {
   const ApodScaffold({Key? key}) : super(key: key);
@@ -27,14 +27,14 @@ class ApodScaffold extends StatelessWidget {
         firstDate: DateTime.parse('1995-06-16'),
         lastDate: DateTime.now(),
       ).then((value) {
-        apodData.updateSelectedDate(value ?? apodData.selectedDate);
+        apodData.updateSelectedDateAndFetchApod(value ?? apodData.selectedDate);
       });
     }
 
     void _swiping(DismissDirection direction) {
       final selectedDate = apodData.selectedDate;
       if (direction == DismissDirection.startToEnd) {
-        apodData.updateSelectedDate(
+        apodData.updateSelectedDateAndFetchApod(
           DateTime(
             selectedDate.year,
             selectedDate.month,
@@ -42,7 +42,7 @@ class ApodScaffold extends StatelessWidget {
           ),
         );
       } else if (direction == DismissDirection.endToStart) {
-        apodData.updateSelectedDate(
+        apodData.updateSelectedDateAndFetchApod(
           DateTime(
             selectedDate.year,
             selectedDate.month,
@@ -55,7 +55,7 @@ class ApodScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          apodData.apod.dateForBar,
+          apodData.dateForBar,
         ),
         actions: [
           IconButton(
@@ -96,11 +96,9 @@ class ApodScaffold extends StatelessWidget {
             ),
           ),
           panel: SingleChildScrollView(
-            child: Text(apodData.apod.explanation),
+            child: Text(apodData.explanation),
           ),
-          body: apodData.apod.isVideo
-              ? const VideoContent()
-              : const ImageContent(),
+          body: apodData.isVideo ? const VideoContent() : const ImageContent(),
         ),
       ),
     );

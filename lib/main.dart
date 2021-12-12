@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import './providers/apod_provider.dart';
-import './screens/apod_screen.dart';
-import './screens/full_screen_image_screen.dart';
+import 'screens/apod_scaffold_changer.dart';
+import 'screens/full_screen_image.dart';
 
 void main() {
   runApp(const MyApp());

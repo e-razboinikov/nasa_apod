@@ -8,7 +8,7 @@ class ApodLoadingScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: const Center(
-        child: CircularProgressIndicator(),
+        child: LinearProgressIndicator(),
       ),
     );
   }

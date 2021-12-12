@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/apod_provider.dart';
-import '../widgets/apod_content_scaffold.dart';
-import '../widgets/apod_loading_scaffold.dart';
+import 'apod_content_scaffold.dart';
+import 'apod_loading_scaffold.dart';
 
 class ApodScreen extends StatefulWidget {
   const ApodScreen({Key? key}) : super(key: key);
