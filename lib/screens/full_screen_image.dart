@@ -16,23 +16,13 @@ class FullScreenImage extends StatelessWidget {
       direction: DismissDirection.vertical,
       onDismissed: (_) => Navigator.of(context).pop(),
       child: InteractiveViewer(
-        child: Container(
-            child: CustomImageLoader(
-          imageUrl: Provider.of<ApodProvider>(context, listen: false).hdurl,
-        )),
+        child: CustomImageLoader(
+          imageUrl: Provider.of<ApodProvider>(
+            context,
+            listen: false,
+          ).hdurl,
+        ),
       ),
     );
   }
 }
-
-// Container(
-//           decoration: BoxDecoration(
-//             image: DecorationImage(
-//               image: NetworkImage(
-//                 Provider.of<ApodProvider>(context, listen: false).hdurl,
-//               ),
-//               fit: BoxFit.contain,
-//             ),
-//           ),
-//         ),
-//       ),
