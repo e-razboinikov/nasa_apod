@@ -13,13 +13,11 @@ class ApodProvider with ChangeNotifier {
   late String _title;
   late String _explanation;
   late String _url;
-  late String _hdurl;
   DateTime _selectedDate = DateTime.now();
 
   String get title => _title;
   String get explanation => _explanation;
   String get url => _url;
-  String get hdurl => _hdurl;
   DateTime get selectedDate => _selectedDate;
   String get _dateForApi => DateFormat('yyyy-MM-dd').format(_selectedDate);
   String get dateForBar =>
@@ -56,7 +54,6 @@ class ApodProvider with ChangeNotifier {
     _title = json['title'] ?? 'Unknown APOD';
     _explanation = json['explanation'] ?? 'Cant load APOD, try again';
     _url = json['url'] ?? _defaultImageUrl;
-    _hdurl = json['hdurl'] ?? _defaultImageUrl;
   }
 
   Future<void> setRandomDate() async {

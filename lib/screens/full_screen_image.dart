@@ -20,7 +20,7 @@ class FullScreenImage extends StatelessWidget {
           imageUrl: Provider.of<ApodProvider>(
             context,
             listen: false,
-          ).hdurl,
+          ).url,
         ),
       ),
     );
