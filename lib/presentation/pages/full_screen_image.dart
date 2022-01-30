@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../providers/apod_provider.dart';
 import '../widgets/custom_image_loader.dart';
 
 class FullScreenImage extends StatelessWidget {
   static const routeName = '/full-screen-image';
 
-  const FullScreenImage({Key? key}) : super(key: key);
+  final String imageUrl;
+
+  const FullScreenImage({required this.imageUrl, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +15,7 @@ class FullScreenImage extends StatelessWidget {
       key: ValueKey(DateTime.now()),
       direction: DismissDirection.vertical,
       onDismissed: (_) => Navigator.of(context).pop(),
-      child: InteractiveViewer(
-        child: CustomImageLoader(
-          imageUrl: Provider.of<ApodProvider>(
-            context,
-            listen: false,
-          ).url,
-        ),
-      ),
+      child: InteractiveViewer(child: CustomImageLoader(imageUrl: imageUrl)),
     );
   }
 }
