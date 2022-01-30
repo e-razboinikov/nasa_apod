@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/full_screen_image.dart';
+import '../presentation.screens/full_screen_image.dart';
 import '../providers/apod_provider.dart';
 import './custom_image_loader.dart';
 
