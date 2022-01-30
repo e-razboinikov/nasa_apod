@@ -17,10 +17,11 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
 
   ApodBloc({required this.repository}) : super(InititalApodState()) {
     on<LoadApodEvent>((event, emit) async {
+      date = event.date;
       emit(LoadingApodState());
       try {
         final Apod apod = await repository.getApod(
-            dateForApi: DateFormat('yyyy-MM-dd').format(date));
+            dateForApi: DateFormat('yyyy-MM-dd').format(event.date));
         emit(LoadedApodState(apod: apod));
       } catch (e) {
         emit(FailureApodState(errorMessage: e.toString()));
@@ -28,7 +29,7 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
     });
 
     on<LoadRandomApodEvent>((event, emit) async {
-      setRandomDate();
+      date = getRandomDate();
       emit(LoadingApodState());
       try {
         final Apod apod = await repository.getApod(
@@ -40,12 +41,12 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
     });
   }
 
-  setRandomDate() {
+  getRandomDate() {
     final startDate = DateTime(1995, 6, 16);
     final endDate = DateTime.now();
     final randomRange = DateTimeRange(start: startDate, end: endDate);
 
-    date = DateTime(
+    return DateTime(
       startDate.year,
       startDate.month,
       startDate.day + Random().nextInt(randomRange.duration.inDays),

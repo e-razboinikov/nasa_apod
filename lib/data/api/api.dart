@@ -7,7 +7,6 @@ class Api {
     final apodUri = Uri.parse(
         'https://api.nasa.gov/planetary/apod?api_key=$_apiKey&date=$dateForApi');
     final response = await http.get(apodUri);
-
     if (response.statusCode == 200) {
       return response.body;
     } else {
