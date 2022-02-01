@@ -1,11 +1,8 @@
 part of 'apod_bloc.dart';
 
-abstract class ApodEvent {}
+@freezed
+class ApodEvent with _$ApodEvent {
+  const factory ApodEvent.loadApod({required DateTime date}) = LoadApodEvent;
 
-class LoadApodEvent extends ApodEvent {
-  final DateTime date;
-
-  LoadApodEvent({required this.date});
+  const factory ApodEvent.loadRandomApod() = LoadRandomApodEvent;
 }
-
-class LoadRandomApodEvent extends ApodEvent {}

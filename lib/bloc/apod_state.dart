@@ -1,19 +1,13 @@
 part of 'apod_bloc.dart';
 
-abstract class ApodState {}
+@freezed
+class ApodState with _$ApodState {
+  const factory ApodState.initial() = InitialApodState;
 
-class InititalApodState extends ApodState {}
+  const factory ApodState.loading({required DateTime date}) = LoadingApodState;
 
-class LoadingApodState extends ApodState {}
+  const factory ApodState.loaded({required Apod apod}) = LoadedApodState;
 
-class LoadedApodState extends ApodState {
-  final Apod apod;
-
-  LoadedApodState({required this.apod});
-}
-
-class FailureApodState extends ApodState {
-  final String errorMessage;
-
-  FailureApodState({required this.errorMessage});
+  const factory ApodState.failure({required String errorMessage}) =
+      FailureApodState;
 }
