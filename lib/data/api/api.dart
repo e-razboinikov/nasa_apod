@@ -1,16 +1,19 @@
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
-class Api {
-  final _apiKey = 'urwoHdDcZWy1wssi8rT4LaM3erpDzszqhIbSoFYT';
+import '../models/apod.dart';
 
-  Future<String> getApodFromApi(String dateForApi) async {
-    final apodUri = Uri.parse(
-        'https://api.nasa.gov/planetary/apod?api_key=$_apiKey&date=$dateForApi');
-    final response = await http.get(apodUri);
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      throw (response.statusCode);
-    }
-  }
+part 'api.g.dart';
+
+@RestApi(baseUrl: 'https://api.nasa.gov/planetary')
+abstract class Api {
+  factory Api(Dio dio) = _Api;
+
+  @GET('/apod')
+  Future<Apod> getApod({
+    @Query("api_key")
+        String apiKey = 'jCrJkv1SKaVHy2R31vT4KpY4bHGdCWAmAs4qd2OM',
+    @Query("date") required String date,
+  });
 }
+// final _apiKey = 'jCrJkv1SKaVHy2R31vT4KpY4bHGdCWAmAs4qd2OM';
