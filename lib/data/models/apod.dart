@@ -1,19 +1,17 @@
-import '../assets/images.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Apod {
-  final String title;
-  final String explanation;
-  final String imageUrl;
+part 'apod.freezed.dart';
+part 'apod.g.dart';
 
-  const Apod({
-    required this.title,
-    required this.explanation,
-    required this.imageUrl,
-  });
+@freezed
+class Apod with _$Apod {
+  const Apod._();
 
-  factory Apod.fromJson({required Map<String, dynamic> json}) => Apod(
-        title: json['title'] ?? 'Unknown APOD',
-        explanation: json['explanation'] ?? 'Cant load APOD, try again',
-        imageUrl: json['url'] ?? Images.placeholderImageUrl,
-      );
+  const factory Apod({
+    @JsonKey(name: 'title') required String title,
+    @JsonKey(name: 'explanation') required String explanation,
+    @JsonKey(name: 'url') required String imageUrl,
+  }) = _Apod;
+
+  factory Apod.fromJson(Map<String, dynamic> json) => _$ApodFromJson(json);
 }
