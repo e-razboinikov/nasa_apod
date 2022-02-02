@@ -82,7 +82,8 @@ class _ApodPageState extends State<ApodPage> {
               : DismissDirection.horizontal,
           onDismissed: (direction) => _swiping(direction),
           child: state.map(
-            initial: (state) => const Center(),
+            initial: (state) =>
+                const Center(child: Text('Init state has occurred')),
             loading: (state) =>
                 const Center(child: CircularProgressIndicator.adaptive()),
             loaded: (state) => SlidingUpPanel(
