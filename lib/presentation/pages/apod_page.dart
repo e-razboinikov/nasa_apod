@@ -103,9 +103,11 @@ class _ApodPageState extends State<ApodPage> {
               ),
               body: Stack(children: [
                 GestureDetector(
-                  onTap: () => MaterialPageRoute(
-                      builder: (ctx) =>
-                          FullScreenImage(imageUrl: state.apod.imageUrl)),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (ctx) =>
+                              FullScreenImage(imageUrl: state.apod.imageUrl))),
                   child: CustomImageLoader(imageUrl: state.apod.imageUrl),
                 ),
                 Container(
