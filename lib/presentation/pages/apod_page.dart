@@ -100,7 +100,12 @@ class _ApodPageState extends State<ApodPage> {
                 ),
               ),
               panel: SingleChildScrollView(
-                child: Text(state.apod.explanation),
+                child: Column(
+                  children: [
+                    Text(state.apod.explanation),
+                    const SizedBox(height: 50),
+                  ],
+                ),
               ),
               body: Stack(children: [
                 GestureDetector(
