@@ -64,7 +64,7 @@ class _ApodPageState extends State<ApodPage> {
           state.maybeMap(loading: (state) => date = state.date, orElse: () {}),
       builder: (ctx, state) => Scaffold(
         appBar: AppBar(
-            title: Text(DateFormat('MMMM dd, yyyy').format(date)),
+            title: Text(DateFormat('dd MMM yyyy').format(date)),
             actions: [
               IconButton(
                   icon: const Icon(Icons.change_circle_outlined),
