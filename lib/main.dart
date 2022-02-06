@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import './bloc/apod_bloc.dart';
 import './data/repositories/apod_repository.dart';
-import './presentation/pages/apod_page.dart';
+import './splash/splash_screen_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const ApodPage(),
+        home: const SplashScreenPage(),
       ),
     );
   }
