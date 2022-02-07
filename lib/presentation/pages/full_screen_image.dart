@@ -11,13 +11,8 @@ class FullScreenImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: ValueKey(DateTime.now()),
-      direction: DismissDirection.vertical,
-      onDismissed: (_) => Navigator.of(context).pop(),
-      child: InteractiveViewer(
-          child: Hero(
-              tag: 'apod image', child: CustomImageLoader(imageUrl: imageUrl))),
-    );
+    return InteractiveViewer(
+        child: Hero(
+            tag: 'apod image', child: CustomImageLoader(imageUrl: imageUrl)));
   }
 }
