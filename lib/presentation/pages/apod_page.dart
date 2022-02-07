@@ -95,6 +95,7 @@ class _ApodPageState extends State<ApodPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Icon(Icons.arrow_upward_outlined, color: Colors.white),
+                        SizedBox(width: 16),
                         Text('Explanation')
                       ]),
                 ),
