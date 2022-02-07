@@ -16,7 +16,7 @@ class CustomImageLoader extends StatelessWidget {
         return child;
       }
       return Center(
-        child: CircularProgressIndicator(
+        child: CircularProgressIndicator.adaptive(
           value: loadingProgress.expectedTotalBytes != null
               ? loadingProgress.cumulativeBytesLoaded /
                   loadingProgress.expectedTotalBytes!
