@@ -28,8 +28,8 @@ class _SplashScreenPageState extends State<SplashScreenPage>
   void _onEndNavigation(AnimationStatus status) {
     context.read<ApodBloc>().add(LoadApodEvent(date: DateTime.now()));
     if (status == AnimationStatus.completed) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (ctx) => const ApodPage()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (ctx) => const ApodPage()));
     }
   }
 
