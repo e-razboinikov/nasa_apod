@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import './bloc/apod_bloc.dart';
-import './data/repositories/apod_repository.dart';
-import './splash/splash_screen_page.dart';
+import 'package:nasa_apod/application/features/apod_screen/bloc/apod_bloc.dart';
+import 'package:nasa_apod/data/repositories/apod_repository.dart';
+import 'package:nasa_apod/splash/splash_screen_page.dart';
 
 void main() => runApp(const MyApp());
 
