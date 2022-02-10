@@ -23,14 +23,10 @@ class MyApp extends StatelessWidget {
             primary: const Color.fromRGBO(11, 65, 141, 1),
           ),
           textTheme: TextTheme(
-            headline6: GoogleFonts.spaceGrotesk(
-              fontSize: 24,
-              color: Colors.white,
-            ),
-            headline5: GoogleFonts.spaceGrotesk(
-              fontSize: 20,
-              color: Colors.white,
-            ),
+            headline6:
+                GoogleFonts.spaceGrotesk(fontSize: 24, color: Colors.white),
+            headline5:
+                GoogleFonts.spaceGrotesk(fontSize: 20, color: Colors.white),
             bodyText2: GoogleFonts.spaceGrotesk(
               wordSpacing: 10.0,
               fontWeight: FontWeight.w200,
