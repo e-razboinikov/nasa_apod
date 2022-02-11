@@ -45,12 +45,15 @@ const $Apod = _$ApodTearOff();
 mixin _$Apod {
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'explanation')
   String get explanation => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'url')
   String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $ApodCopyWith<Apod> get copyWith => throw _privateConstructorUsedError;
 }
@@ -59,6 +62,7 @@ mixin _$Apod {
 abstract class $ApodCopyWith<$Res> {
   factory $ApodCopyWith(Apod value, $Res Function(Apod) then) =
       _$ApodCopyWithImpl<$Res>;
+
   $Res call(
       {@JsonKey(name: 'title') String title,
       @JsonKey(name: 'explanation') String explanation,
@@ -70,6 +74,7 @@ class _$ApodCopyWithImpl<$Res> implements $ApodCopyWith<$Res> {
   _$ApodCopyWithImpl(this._value, this._then);
 
   final Apod _value;
+
   // ignore: unused_field
   final $Res Function(Apod) _then;
 
@@ -100,6 +105,7 @@ class _$ApodCopyWithImpl<$Res> implements $ApodCopyWith<$Res> {
 abstract class _$ApodCopyWith<$Res> implements $ApodCopyWith<$Res> {
   factory _$ApodCopyWith(_Apod value, $Res Function(_Apod) then) =
       __$ApodCopyWithImpl<$Res>;
+
   @override
   $Res call(
       {@JsonKey(name: 'title') String title,
@@ -199,6 +205,7 @@ abstract class _Apod extends Apod {
       {@JsonKey(name: 'title') required String title,
       @JsonKey(name: 'explanation') required String explanation,
       @JsonKey(name: 'url') required String imageUrl}) = _$_Apod;
+
   const _Apod._() : super._();
 
   factory _Apod.fromJson(Map<String, dynamic> json) = _$_Apod.fromJson;
@@ -206,12 +213,15 @@ abstract class _Apod extends Apod {
   @override
   @JsonKey(name: 'title')
   String get title;
+
   @override
   @JsonKey(name: 'explanation')
   String get explanation;
+
   @override
   @JsonKey(name: 'url')
   String get imageUrl;
+
   @override
   @JsonKey(ignore: true)
   _$ApodCopyWith<_Apod> get copyWith => throw _privateConstructorUsedError;

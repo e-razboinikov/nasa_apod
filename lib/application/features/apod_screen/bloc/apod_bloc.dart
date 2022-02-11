@@ -8,9 +8,7 @@ import 'package:nasa_apod/data/models/apod.dart';
 import 'package:nasa_apod/data/repositories/apod_repository.dart';
 
 part 'apod_bloc.freezed.dart';
-
 part 'apod_event.dart';
-
 part 'apod_state.dart';
 
 class ApodBloc extends Bloc<ApodEvent, ApodState> {

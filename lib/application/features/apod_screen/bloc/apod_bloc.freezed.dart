@@ -40,12 +40,14 @@ mixin _$ApodEvent {
     required TResult Function() loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(DateTime date)? loadApod,
     TResult Function()? loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime date)? loadApod,
@@ -53,18 +55,21 @@ mixin _$ApodEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadApodEvent value) loadApod,
     required TResult Function(LoadRandomApodEvent value) loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadApodEvent value)? loadApod,
     TResult Function(LoadRandomApodEvent value)? loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadApodEvent value)? loadApod,
@@ -85,6 +90,7 @@ class _$ApodEventCopyWithImpl<$Res> implements $ApodEventCopyWith<$Res> {
   _$ApodEventCopyWithImpl(this._value, this._then);
 
   final ApodEvent _value;
+
   // ignore: unused_field
   final $Res Function(ApodEvent) _then;
 }
@@ -94,6 +100,7 @@ abstract class $LoadApodEventCopyWith<$Res> {
   factory $LoadApodEventCopyWith(
           LoadApodEvent value, $Res Function(LoadApodEvent) then) =
       _$LoadApodEventCopyWithImpl<$Res>;
+
   $Res call({DateTime date});
 }
 
@@ -217,6 +224,7 @@ abstract class LoadApodEvent implements ApodEvent {
   const factory LoadApodEvent({required DateTime date}) = _$LoadApodEvent;
 
   DateTime get date;
+
   @JsonKey(ignore: true)
   $LoadApodEventCopyWith<LoadApodEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -367,6 +375,7 @@ mixin _$ApodState {
     required TResult Function(String errorMessage) failure,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
@@ -375,6 +384,7 @@ mixin _$ApodState {
     TResult Function(String errorMessage)? failure,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -384,6 +394,7 @@ mixin _$ApodState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialApodState value) initial,
@@ -392,6 +403,7 @@ mixin _$ApodState {
     required TResult Function(FailureApodState value) failure,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialApodState value)? initial,
@@ -400,6 +412,7 @@ mixin _$ApodState {
     TResult Function(FailureApodState value)? failure,
   }) =>
       throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialApodState value)? initial,
@@ -422,6 +435,7 @@ class _$ApodStateCopyWithImpl<$Res> implements $ApodStateCopyWith<$Res> {
   _$ApodStateCopyWithImpl(this._value, this._then);
 
   final ApodState _value;
+
   // ignore: unused_field
   final $Res Function(ApodState) _then;
 }
@@ -547,6 +561,7 @@ abstract class $LoadingApodStateCopyWith<$Res> {
   factory $LoadingApodStateCopyWith(
           LoadingApodState value, $Res Function(LoadingApodState) then) =
       _$LoadingApodStateCopyWithImpl<$Res>;
+
   $Res call({DateTime date});
 }
 
@@ -682,6 +697,7 @@ abstract class LoadingApodState implements ApodState {
   const factory LoadingApodState({required DateTime date}) = _$LoadingApodState;
 
   DateTime get date;
+
   @JsonKey(ignore: true)
   $LoadingApodStateCopyWith<LoadingApodState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -692,6 +708,7 @@ abstract class $LoadedApodStateCopyWith<$Res> {
   factory $LoadedApodStateCopyWith(
           LoadedApodState value, $Res Function(LoadedApodState) then) =
       _$LoadedApodStateCopyWithImpl<$Res>;
+
   $Res call({Apod apod});
 
   $ApodCopyWith<$Res> get apod;
@@ -836,6 +853,7 @@ abstract class LoadedApodState implements ApodState {
   const factory LoadedApodState({required Apod apod}) = _$LoadedApodState;
 
   Apod get apod;
+
   @JsonKey(ignore: true)
   $LoadedApodStateCopyWith<LoadedApodState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -846,6 +864,7 @@ abstract class $FailureApodStateCopyWith<$Res> {
   factory $FailureApodStateCopyWith(
           FailureApodState value, $Res Function(FailureApodState) then) =
       _$FailureApodStateCopyWithImpl<$Res>;
+
   $Res call({String errorMessage});
 }
 
@@ -983,6 +1002,7 @@ abstract class FailureApodState implements ApodState {
       _$FailureApodState;
 
   String get errorMessage;
+
   @JsonKey(ignore: true)
   $FailureApodStateCopyWith<FailureApodState> get copyWith =>
       throw _privateConstructorUsedError;
