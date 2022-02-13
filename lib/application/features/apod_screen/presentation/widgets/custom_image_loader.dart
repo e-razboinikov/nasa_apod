@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class CustomImageLoader extends StatelessWidget {
   final String imageUrl;
 
-  const CustomImageLoader({
-    Key? key,
-    required this.imageUrl,
-  }) : super(key: key);
+  const CustomImageLoader({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
