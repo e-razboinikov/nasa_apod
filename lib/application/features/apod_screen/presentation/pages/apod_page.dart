@@ -119,7 +119,7 @@ class _ApodPageState extends State<ApodPage> {
                         vertical: 56, horizontal: 28),
                     child: Hero(
                         transitionOnUserGestures: true,
-                        tag: 'apod image',
+                        tag: 'apod',
                         child:
                             CustomImageLoader(imageUrl: state.apod.imageUrl)),
                   ),
