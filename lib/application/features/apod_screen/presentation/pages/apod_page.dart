@@ -94,18 +94,16 @@ class _ApodPageState extends State<ApodPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Icon(Icons.arrow_upward_outlined, color: Colors.white),
-                        SizedBox(width: 16),
+                        SizedBox(width: 16.0),
                         Text('Explanation')
                       ]),
                 ),
               ),
               panel: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(state.apod.explanation),
-                    const SizedBox(height: 50),
-                  ],
-                ),
+                child: Column(children: [
+                  Text(state.apod.explanation),
+                  const SizedBox(height: 50.0),
+                ]),
               ),
               body: Stack(children: [
                 GestureDetector(
