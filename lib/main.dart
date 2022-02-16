@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider<ApodBloc>(
       create: (ctx) => ApodBloc(repository: ApodRepository()),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         title: 'NASA APOD',
         theme: ThemeData(
           canvasColor: Colors.black,
