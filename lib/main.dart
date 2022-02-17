@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             headline6:
                 GoogleFonts.spaceGrotesk(fontSize: 24, color: Colors.white),
             headline5:
-                GoogleFonts.spaceGrotesk(fontSize: 20, color: Colors.white),
+                GoogleFonts.spaceGrotesk(fontSize: 18, color: Colors.white),
             bodyText2: GoogleFonts.spaceGrotesk(
               wordSpacing: 10.0,
               fontWeight: FontWeight.w200,
