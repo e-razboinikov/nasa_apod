@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:nasa_apod/data/models/apod.dart';
-import 'package:nasa_apod/data/repositories/apod_repository.dart';
+import 'package:nasa_apod/application/features/apod_screen/data/models/apod.dart';
+import 'package:nasa_apod/application/features/apod_screen/data/repositories/apod_repository.dart';
 
 part 'apod_bloc.freezed.dart';
+
 part 'apod_event.dart';
+
 part 'apod_state.dart';
 
 class ApodBloc extends Bloc<ApodEvent, ApodState> {
