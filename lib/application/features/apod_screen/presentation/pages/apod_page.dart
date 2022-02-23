@@ -124,7 +124,7 @@ class _ApodPageState extends State<ApodPage> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.black45,
+                  color: Colors.black54,
                   width: double.infinity,
                   child: Text(state.apod.title,
                       style: Theme.of(context).textTheme.headline5,
