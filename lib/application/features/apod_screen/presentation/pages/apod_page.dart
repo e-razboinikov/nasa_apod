@@ -111,15 +111,14 @@ class _ApodPageState extends State<ApodPage> {
                       context,
                       MaterialPageRoute(
                           builder: (ctx) =>
-                              FullScreenImage(imageUrl: state.apod.imageUrl))),
+                              FullScreenImage(imageUrl: state.apod.url))),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 48, horizontal: 28),
                     child: Hero(
                         transitionOnUserGestures: true,
                         tag: 'apod',
-                        child:
-                            CustomImageLoader(imageUrl: state.apod.imageUrl)),
+                        child: CustomImageLoader(imageUrl: state.apod.url)),
                   ),
                 ),
                 Container(
