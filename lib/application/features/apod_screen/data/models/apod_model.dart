@@ -12,9 +12,7 @@ class ApodModel extends ApodEntity {
         );
 
   factory ApodModel.fromJson(Map<String, dynamic> json) => ApodModel(
-      title: json['title'],
-      explanation: json['explanation'],
-      url: json['explanation']);
+      title: json['title'], explanation: json['explanation'], url: json['url']);
 
   Map<String, dynamic> toJson() => {
         'title': title,
