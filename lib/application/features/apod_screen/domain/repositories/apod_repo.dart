@@ -1,5 +1,5 @@
-import 'package:nasa_apod/application/features/apod_screen/data/models/apod.dart';
+import 'package:nasa_apod/application/features/apod_screen/data/models/apod_model.dart';
 
 abstract class ApodRepo {
-  Future<Apod> getApod({required String date});
+  Future<ApodModel> getApod({required String date});
 }

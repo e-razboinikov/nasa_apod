@@ -18,7 +18,7 @@ class _ApodApi implements ApodApi {
   String? baseUrl;
 
   @override
-  Future<Apod> getApod(
+  Future<ApodModel> getApod(
       {apiKey = 'jCrJkv1SKaVHy2R31vT4KpY4bHGdCWAmAs4qd2OM',
       required date}) async {
     const _extra = <String, dynamic>{};
@@ -28,12 +28,13 @@ class _ApodApi implements ApodApi {
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Apod>(
-        Options(method: 'GET', headers: _headers, extra: _extra)
-            .compose(_dio.options, '/apod',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Apod.fromJson(_result.data!);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApodModel>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/apod',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ApodModel.fromJson(_result.data!);
     return value;
   }
 
