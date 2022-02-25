@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 import 'package:nasa_apod/application/features/apod_screen/data/models/apod.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/repositories/apod_repository.dart';
+import 'package:nasa_apod/application/features/apod_screen/data/repositories/apod_repo_impl.dart';
 
 part 'apod_bloc.freezed.dart';
 
@@ -14,7 +14,7 @@ part 'apod_event.dart';
 part 'apod_state.dart';
 
 class ApodBloc extends Bloc<ApodEvent, ApodState> {
-  final ApodRepository repository;
+  final ApodRepoImpl repository;
   late Emitter emitItem;
 
   ApodBloc({required this.repository}) : super(const InitialApodState()) {
