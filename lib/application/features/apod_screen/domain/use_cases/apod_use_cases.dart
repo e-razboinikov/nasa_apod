@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/models/apod_model.dart';
+import 'package:nasa_apod/application/features/apod_screen/domain/entities/apod_entity.dart';
 import 'package:nasa_apod/application/features/apod_screen/domain/repositories/apod_repo.dart';
 
 class ApodUseCases {
@@ -9,7 +9,7 @@ class ApodUseCases {
 
   const ApodUseCases({required this.apodRepo});
 
-  Future<ApodModel> getApod({required String date}) async =>
+  Future<ApodEntity> getApod({required String date}) async =>
       await apodRepo.getApod(date: date);
 
   getRandomDate() {
