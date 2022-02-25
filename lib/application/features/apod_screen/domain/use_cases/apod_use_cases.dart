@@ -12,11 +12,6 @@ class ApodUseCases {
   Future<Apod> getApod({required String date}) async =>
       await apodRepo.getApod(date: date);
 
-  Future<Apod> getRandomApod() async {
-    final date = getRandomDate();
-    return await apodRepo.getApod(date: date);
-  }
-
   getRandomDate() {
     final startDate = DateTime(1995, 6, 16);
     final endDate = DateTime.now();
