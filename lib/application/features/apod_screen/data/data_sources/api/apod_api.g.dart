@@ -8,8 +8,8 @@ part of 'apod_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps
 
-class _Api implements Api {
-  _Api(this._dio, {this.baseUrl}) {
+class _ApodApi implements ApodApi {
+  _ApodApi(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://api.nasa.gov/planetary';
   }
 

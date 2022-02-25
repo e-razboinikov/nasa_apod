@@ -5,8 +5,8 @@ import 'package:retrofit/retrofit.dart';
 part 'apod_api.g.dart';
 
 @RestApi(baseUrl: 'https://api.nasa.gov/planetary')
-abstract class Api {
-  factory Api(Dio dio) = _Api;
+abstract class ApodApi {
+  factory ApodApi(Dio dio) = _ApodApi;
 
   @GET('/apod')
   Future<Apod> getApod({
