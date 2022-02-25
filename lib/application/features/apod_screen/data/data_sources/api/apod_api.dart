@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:nasa_apod/application/features/apod_screen/data/models/apod.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'api.g.dart';
+part 'apod_api.g.dart';
 
 @RestApi(baseUrl: 'https://api.nasa.gov/planetary')
 abstract class Api {
@@ -15,4 +15,3 @@ abstract class Api {
     @Query("date") required String date,
   });
 }
-// final _apiKey = 'jCrJkv1SKaVHy2R31vT4KpY4bHGdCWAmAs4qd2OM';
