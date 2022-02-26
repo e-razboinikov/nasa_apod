@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/data_sources/api/apod_api.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/data_sources/services/apod_service.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/repositories/apod_repo_impl.dart';
-import 'package:nasa_apod/application/features/apod_screen/domain/use_cases/apod_use_cases.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/bloc/apod_bloc.dart';
-import 'package:nasa_apod/application/features/splash/presentation/pages/splash_screen_page.dart';
+import 'package:nasa_apod/features/apod_screen/data/data_sources/api/apod_api.dart';
+import 'package:nasa_apod/features/apod_screen/data/data_sources/services/apod_service.dart';
+import 'package:nasa_apod/features/apod_screen/data/repositories/apod_repo_impl.dart';
+import 'package:nasa_apod/features/apod_screen/domain/use_cases/apod_use_cases.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/bloc/apod_bloc.dart';
+import 'package:nasa_apod/features/splash/presentation/pages/splash_screen_page.dart';
 
 void main() => runApp(const MyApp());
 

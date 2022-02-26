@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/bloc/apod_bloc.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/pages/apod_page.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/bloc/apod_bloc.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/pages/apod_page.dart';
 
 class SplashScreenPage extends StatefulWidget {
   final String animationAsset = 'assets/json/nasa_animated_logo.json';

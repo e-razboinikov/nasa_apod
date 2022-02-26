@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:nasa_apod/application/features/apod_screen/domain/entities/apod_entity.dart';
-import 'package:nasa_apod/application/features/apod_screen/domain/use_cases/apod_use_cases.dart';
+import 'package:nasa_apod/features/apod_screen/domain/entities/apod_entity.dart';
+import 'package:nasa_apod/features/apod_screen/domain/use_cases/apod_use_cases.dart';
 
 part 'apod_bloc.freezed.dart';
 part 'apod_event.dart';

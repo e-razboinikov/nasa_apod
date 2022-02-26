@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/widgets/custom_image_loader.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/widgets/custom_image_loader.dart';
 
 class FullScreenImage extends StatelessWidget {
   static const routeName = '/full-screen-image';

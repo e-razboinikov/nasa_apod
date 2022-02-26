@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/bloc/apod_bloc.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/pages/full_screen_image.dart';
-import 'package:nasa_apod/application/features/apod_screen/presentation/widgets/custom_image_loader.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/bloc/apod_bloc.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/pages/full_screen_image.dart';
+import 'package:nasa_apod/features/apod_screen/presentation/widgets/custom_image_loader.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ApodPage extends StatefulWidget {
