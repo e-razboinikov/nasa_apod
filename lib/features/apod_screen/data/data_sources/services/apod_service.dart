@@ -1,5 +1,5 @@
-import 'package:nasa_apod/application/features/apod_screen/data/data_sources/api/apod_api.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/models/apod_model.dart';
+import 'package:nasa_apod/features/apod_screen/data/data_sources/api/apod_api.dart';
+import 'package:nasa_apod/features/apod_screen/data/models/apod_model.dart';
 
 class ApodService {
   final ApodApi apodApi;

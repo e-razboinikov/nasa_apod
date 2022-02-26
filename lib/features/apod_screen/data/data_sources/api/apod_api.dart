@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:nasa_apod/application/features/apod_screen/data/models/apod_model.dart';
+import 'package:nasa_apod/features/apod_screen/data/models/apod_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'apod_api.g.dart';

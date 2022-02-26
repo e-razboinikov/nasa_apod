@@ -1,4 +1,4 @@
-import 'package:nasa_apod/application/features/apod_screen/domain/entities/apod_entity.dart';
+import 'package:nasa_apod/features/apod_screen/domain/entities/apod_entity.dart';
 
 class ApodModel extends ApodEntity {
   const ApodModel({

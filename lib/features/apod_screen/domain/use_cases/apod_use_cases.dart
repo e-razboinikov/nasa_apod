@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:nasa_apod/application/features/apod_screen/domain/entities/apod_entity.dart';
-import 'package:nasa_apod/application/features/apod_screen/domain/repositories/apod_repo.dart';
+import 'package:nasa_apod/features/apod_screen/domain/entities/apod_entity.dart';
+import 'package:nasa_apod/features/apod_screen/domain/repositories/apod_repo.dart';
 
 class ApodUseCases {
   final ApodRepo apodRepo;
