@@ -59,8 +59,10 @@ class _ApodPageState extends State<ApodPage> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ApodBloc, ApodState>(
-      listener: (ctx, state) =>
-          state.maybeMap(loading: (state) => date = state.date, orElse: () {}),
+      listener: (ctx, state) => state.maybeMap(
+        loaded: (state) => date = state.apod.date,
+        orElse: () => null,
+      ),
       builder: (ctx, state) => Scaffold(
         appBar: AppBar(
             title: Text(DateFormat('dd MMM yyyy').format(date)),
