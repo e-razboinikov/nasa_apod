@@ -21,6 +21,7 @@ class ApodModel extends ApodEntity {
       );
 
   Map<String, dynamic> toJson() => {
+        'date': date,
         'title': title,
         'explanation': explanation,
         'url': url,
