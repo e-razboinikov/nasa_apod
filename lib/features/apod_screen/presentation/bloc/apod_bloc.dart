@@ -4,7 +4,6 @@ import 'package:nasa_apod/features/apod_screen/domain/entities/apod_entity.dart'
 import 'package:nasa_apod/features/apod_screen/domain/use_cases/apod_use_cases.dart';
 
 part 'apod_bloc.freezed.dart';
-
 part 'apod_event.dart';
 part 'apod_state.dart';
 
