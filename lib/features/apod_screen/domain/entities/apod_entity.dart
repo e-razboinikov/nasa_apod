@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ApodEntity extends Equatable {
-  final String date;
+  final DateTime date;
   final String title;
   final String explanation;
   final String url;
