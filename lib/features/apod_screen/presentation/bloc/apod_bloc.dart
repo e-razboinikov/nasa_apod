@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 import 'package:nasa_apod/features/apod_screen/domain/entities/apod_entity.dart';
 import 'package:nasa_apod/features/apod_screen/domain/use_cases/apod_use_cases.dart';
 
 part 'apod_bloc.freezed.dart';
+
 part 'apod_event.dart';
 part 'apod_state.dart';
 
@@ -24,10 +23,9 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
   }
 
   _loadApod(LoadApodEvent event) async {
-    emitItem(LoadingApodState(date: event.date));
+    emitItem(const LoadingApodState());
     try {
-      final ApodEntity apod = await apodUseCases.getApod(
-          date: DateFormat('yyyy-MM-dd').format(event.date));
+      final apod = await apodUseCases.getApod(date: event.date);
       emitItem(LoadedApodState(apod: apod));
     } catch (e) {
       emitItem(FailureApodState(errorMessage: e.toString()));
@@ -35,11 +33,9 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
   }
 
   _loadRandomApod(LoadRandomApodEvent event) async {
-    final DateTime radnomDate = apodUseCases.getRandomDate();
-    emitItem(LoadingApodState(date: radnomDate));
+    emitItem(const LoadingApodState());
     try {
-      final ApodEntity apod = await apodUseCases.getApod(
-          date: DateFormat('yyyy-MM-dd').format(radnomDate));
+      final apod = await apodUseCases.getRandomApod();
       emitItem(LoadedApodState(apod: apod));
     } catch (e) {
       emitItem(FailureApodState(errorMessage: e.toString()));
