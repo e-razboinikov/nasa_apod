@@ -4,7 +4,7 @@ part of 'apod_bloc.dart';
 class ApodState with _$ApodState {
   const factory ApodState.initial() = InitialApodState;
 
-  const factory ApodState.loading({required DateTime date}) = LoadingApodState;
+  const factory ApodState.loading() = LoadingApodState;
 
   const factory ApodState.loaded({required ApodEntity apod}) = LoadedApodState;
 

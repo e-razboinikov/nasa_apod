@@ -40,14 +40,12 @@ mixin _$ApodEvent {
     required TResult Function() loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(DateTime date)? loadApod,
     TResult Function()? loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DateTime date)? loadApod,
@@ -55,21 +53,18 @@ mixin _$ApodEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadApodEvent value) loadApod,
     required TResult Function(LoadRandomApodEvent value) loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(LoadApodEvent value)? loadApod,
     TResult Function(LoadRandomApodEvent value)? loadRandomApod,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadApodEvent value)? loadApod,
@@ -90,7 +85,6 @@ class _$ApodEventCopyWithImpl<$Res> implements $ApodEventCopyWith<$Res> {
   _$ApodEventCopyWithImpl(this._value, this._then);
 
   final ApodEvent _value;
-
   // ignore: unused_field
   final $Res Function(ApodEvent) _then;
 }
@@ -100,7 +94,6 @@ abstract class $LoadApodEventCopyWith<$Res> {
   factory $LoadApodEventCopyWith(
           LoadApodEvent value, $Res Function(LoadApodEvent) then) =
       _$LoadApodEventCopyWithImpl<$Res>;
-
   $Res call({DateTime date});
 }
 
@@ -224,7 +217,6 @@ abstract class LoadApodEvent implements ApodEvent {
   const factory LoadApodEvent({required DateTime date}) = _$LoadApodEvent;
 
   DateTime get date;
-
   @JsonKey(ignore: true)
   $LoadApodEventCopyWith<LoadApodEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -343,10 +335,8 @@ class _$ApodStateTearOff {
     return const InitialApodState();
   }
 
-  LoadingApodState loading({required DateTime date}) {
-    return LoadingApodState(
-      date: date,
-    );
+  LoadingApodState loading() {
+    return const LoadingApodState();
   }
 
   LoadedApodState loaded({required ApodEntity apod}) {
@@ -370,31 +360,28 @@ mixin _$ApodState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(DateTime date) loading,
+    required TResult Function() loading,
     required TResult Function(ApodEntity apod) loaded,
     required TResult Function(String errorMessage) failure,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialApodState value) initial,
@@ -403,7 +390,6 @@ mixin _$ApodState {
     required TResult Function(FailureApodState value) failure,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialApodState value)? initial,
@@ -412,7 +398,6 @@ mixin _$ApodState {
     TResult Function(FailureApodState value)? failure,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialApodState value)? initial,
@@ -435,7 +420,6 @@ class _$ApodStateCopyWithImpl<$Res> implements $ApodStateCopyWith<$Res> {
   _$ApodStateCopyWithImpl(this._value, this._then);
 
   final ApodState _value;
-
   // ignore: unused_field
   final $Res Function(ApodState) _then;
 }
@@ -481,7 +465,7 @@ class _$InitialApodState implements InitialApodState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(DateTime date) loading,
+    required TResult Function() loading,
     required TResult Function(ApodEntity apod) loaded,
     required TResult Function(String errorMessage) failure,
   }) {
@@ -492,7 +476,7 @@ class _$InitialApodState implements InitialApodState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
   }) {
@@ -503,7 +487,7 @@ class _$InitialApodState implements InitialApodState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
@@ -561,8 +545,6 @@ abstract class $LoadingApodStateCopyWith<$Res> {
   factory $LoadingApodStateCopyWith(
           LoadingApodState value, $Res Function(LoadingApodState) then) =
       _$LoadingApodStateCopyWithImpl<$Res>;
-
-  $Res call({DateTime date});
 }
 
 /// @nodoc
@@ -574,83 +556,60 @@ class _$LoadingApodStateCopyWithImpl<$Res> extends _$ApodStateCopyWithImpl<$Res>
 
   @override
   LoadingApodState get _value => super._value as LoadingApodState;
-
-  @override
-  $Res call({
-    Object? date = freezed,
-  }) {
-    return _then(LoadingApodState(
-      date: date == freezed
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$LoadingApodState implements LoadingApodState {
-  const _$LoadingApodState({required this.date});
-
-  @override
-  final DateTime date;
+  const _$LoadingApodState();
 
   @override
   String toString() {
-    return 'ApodState.loading(date: $date)';
+    return 'ApodState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is LoadingApodState &&
-            const DeepCollectionEquality().equals(other.date, date));
+        (other.runtimeType == runtimeType && other is LoadingApodState);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(date));
-
-  @JsonKey(ignore: true)
-  @override
-  $LoadingApodStateCopyWith<LoadingApodState> get copyWith =>
-      _$LoadingApodStateCopyWithImpl<LoadingApodState>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(DateTime date) loading,
+    required TResult Function() loading,
     required TResult Function(ApodEntity apod) loaded,
     required TResult Function(String errorMessage) failure,
   }) {
-    return loading(date);
+    return loading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
   }) {
-    return loading?.call(date);
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(date);
+      return loading();
     }
     return orElse();
   }
@@ -694,13 +653,7 @@ class _$LoadingApodState implements LoadingApodState {
 }
 
 abstract class LoadingApodState implements ApodState {
-  const factory LoadingApodState({required DateTime date}) = _$LoadingApodState;
-
-  DateTime get date;
-
-  @JsonKey(ignore: true)
-  $LoadingApodStateCopyWith<LoadingApodState> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory LoadingApodState() = _$LoadingApodState;
 }
 
 /// @nodoc
@@ -708,7 +661,6 @@ abstract class $LoadedApodStateCopyWith<$Res> {
   factory $LoadedApodStateCopyWith(
           LoadedApodState value, $Res Function(LoadedApodState) then) =
       _$LoadedApodStateCopyWithImpl<$Res>;
-
   $Res call({ApodEntity apod});
 }
 
@@ -769,7 +721,7 @@ class _$LoadedApodState implements LoadedApodState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(DateTime date) loading,
+    required TResult Function() loading,
     required TResult Function(ApodEntity apod) loaded,
     required TResult Function(String errorMessage) failure,
   }) {
@@ -780,7 +732,7 @@ class _$LoadedApodState implements LoadedApodState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
   }) {
@@ -791,7 +743,7 @@ class _$LoadedApodState implements LoadedApodState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
@@ -844,7 +796,6 @@ abstract class LoadedApodState implements ApodState {
   const factory LoadedApodState({required ApodEntity apod}) = _$LoadedApodState;
 
   ApodEntity get apod;
-
   @JsonKey(ignore: true)
   $LoadedApodStateCopyWith<LoadedApodState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -855,7 +806,6 @@ abstract class $FailureApodStateCopyWith<$Res> {
   factory $FailureApodStateCopyWith(
           FailureApodState value, $Res Function(FailureApodState) then) =
       _$FailureApodStateCopyWithImpl<$Res>;
-
   $Res call({String errorMessage});
 }
 
@@ -917,7 +867,7 @@ class _$FailureApodState implements FailureApodState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(DateTime date) loading,
+    required TResult Function() loading,
     required TResult Function(ApodEntity apod) loaded,
     required TResult Function(String errorMessage) failure,
   }) {
@@ -928,7 +878,7 @@ class _$FailureApodState implements FailureApodState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
   }) {
@@ -939,7 +889,7 @@ class _$FailureApodState implements FailureApodState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(DateTime date)? loading,
+    TResult Function()? loading,
     TResult Function(ApodEntity apod)? loaded,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
@@ -993,7 +943,6 @@ abstract class FailureApodState implements ApodState {
       _$FailureApodState;
 
   String get errorMessage;
-
   @JsonKey(ignore: true)
   $FailureApodStateCopyWith<FailureApodState> get copyWith =>
       throw _privateConstructorUsedError;
