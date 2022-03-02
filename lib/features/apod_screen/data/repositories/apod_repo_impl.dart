@@ -7,6 +7,7 @@ class ApodRepoImpl extends ApodRepo {
 
   ApodRepoImpl({required this.apodService});
 
+  @override
   Future<ApodEntity> getApod({required String date}) async =>
       await apodService.getApod(date: date);
 }
