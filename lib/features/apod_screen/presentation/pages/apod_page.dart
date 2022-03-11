@@ -115,8 +115,7 @@ class _ApodPageState extends State<ApodPage> {
                           builder: (ctx) =>
                               FullScreenImage(imageUrl: state.apod.url))),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 48, horizontal: 28),
+                    padding: const EdgeInsets.symmetric(vertical: 48),
                     child: Hero(
                         transitionOnUserGestures: true,
                         tag: 'apod',
