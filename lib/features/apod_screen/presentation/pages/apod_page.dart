@@ -64,18 +64,16 @@ class _ApodPageState extends State<ApodPage> {
         orElse: () => null,
       ),
       builder: (ctx, state) => Scaffold(
-        appBar: AppBar(
-            title: Text(DateFormat('dd MMM yyyy').format(date)),
-            actions: [
-              IconButton(
-                  icon: const Icon(Icons.change_circle_outlined),
-                  onPressed: () => context
-                      .read<ApodBloc>()
-                      .add(const LoadRandomApodEvent())),
-              IconButton(
-                  onPressed: () => _showDatePicker(),
-                  icon: const Icon(Icons.calendar_today_outlined)),
-            ]),
+        appBar:
+            AppBar(title: Text(DateFormat('dd MMM yy').format(date)), actions: [
+          IconButton(
+              icon: const Icon(Icons.change_circle_outlined),
+              onPressed: () =>
+                  context.read<ApodBloc>().add(const LoadRandomApodEvent())),
+          IconButton(
+              onPressed: () => _showDatePicker(),
+              icon: const Icon(Icons.calendar_today_outlined)),
+        ]),
         body: Dismissible(
           key: ValueKey(DateTime.now()),
           direction: (date.day == DateTime.now().day)
