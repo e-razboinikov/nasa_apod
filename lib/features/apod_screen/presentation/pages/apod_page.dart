@@ -102,7 +102,7 @@ class _ApodPageState extends State<ApodPage> {
               panel: SingleChildScrollView(
                 child: Column(children: [
                   Text(state.apod.explanation),
-                  const SizedBox(height: 50.0),
+                  const SizedBox(height: 48.0),
                 ]),
               ),
               body: Stack(children: [
