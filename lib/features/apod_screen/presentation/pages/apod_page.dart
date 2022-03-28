@@ -105,30 +105,32 @@ class _ApodPageState extends State<ApodPage> {
                   const SizedBox(height: 48.0),
                 ]),
               ),
-              body: Stack(children: [
-                GestureDetector(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (ctx) =>
-                              FullScreenImage(imageUrl: state.apod.url))),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 48),
-                    child: Hero(
-                        transitionOnUserGestures: true,
-                        tag: 'apod',
-                        child: CustomImageLoader(imageUrl: state.apod.url)),
+              body: Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) =>
+                                FullScreenImage(imageUrl: state.apod.url))),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 48),
+                      child: Hero(
+                          transitionOnUserGestures: true,
+                          tag: 'apod',
+                          child: CustomImageLoader(imageUrl: state.apod.url)),
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  color: Colors.black54,
-                  width: double.infinity,
-                  child: Text(state.apod.title,
-                      style: Theme.of(context).textTheme.headline5,
-                      textAlign: TextAlign.end),
-                ),
-              ]),
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                    color: Colors.black54,
+                    width: double.infinity,
+                    child: Text(state.apod.title,
+                        style: Theme.of(context).textTheme.headline5,
+                        textAlign: TextAlign.end),
+                  ),
+                ],
+              ),
             ),
             failure: (state) => Center(child: Text(state.errorMessage)),
           ),
