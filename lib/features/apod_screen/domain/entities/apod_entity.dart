@@ -14,9 +14,5 @@ class ApodEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        title,
-        explanation,
-        url,
-      ];
+  List<Object?> get props => [date, title, explanation, url];
 }

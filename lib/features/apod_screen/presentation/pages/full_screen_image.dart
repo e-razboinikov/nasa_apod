@@ -6,11 +6,16 @@ class FullScreenImage extends StatelessWidget {
 
   final String imageUrl;
 
-  const FullScreenImage({required this.imageUrl, Key? key}) : super(key: key);
+  const FullScreenImage({
+    required this.imageUrl,
+    Key? key,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return InteractiveViewer(
-        child: Hero(tag: 'apod', child: CustomImageLoader(imageUrl: imageUrl)));
-  }
+  Widget build(BuildContext context) => InteractiveViewer(
+        child: Hero(
+          tag: 'apod',
+          child: CustomImageLoader(imageUrl: imageUrl),
+        ),
+      );
 }

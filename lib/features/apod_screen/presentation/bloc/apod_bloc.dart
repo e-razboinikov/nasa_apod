@@ -21,7 +21,7 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
     });
   }
 
-  _loadApod(LoadApodEvent event) async {
+  Future<void> _loadApod(LoadApodEvent event) async {
     emitItem(const LoadingApodState());
     try {
       final apod = await apodUseCases.getApod(date: event.date);
@@ -31,7 +31,7 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
     }
   }
 
-  _loadRandomApod(LoadRandomApodEvent event) async {
+  Future<void> _loadRandomApod(LoadRandomApodEvent event) async {
     emitItem(const LoadingApodState());
     try {
       final apod = await apodUseCases.getRandomApod();
