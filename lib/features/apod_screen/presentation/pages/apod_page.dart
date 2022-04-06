@@ -37,9 +37,8 @@ class _ApodPageState extends State<ApodPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.change_circle_outlined),
-              onPressed: () => context.read<ApodBloc>().add(
-                    const LoadRandomApodEvent(),
-                  ),
+              onPressed: () =>
+                  context.read<ApodBloc>().add(const LoadRandomApodEvent()),
             ),
             IconButton(
               onPressed: () => _showDatePicker(),
