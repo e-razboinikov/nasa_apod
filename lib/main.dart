@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
         apodUseCases: ApodUseCases(
           apodRepo: ApodRepoImpl(
             apodService: ApodService(
-              apodApi: ApodApi(Dio()),
+              apodApi: ApodApi(
+                Dio(),
+              ),
             ),
           ),
         ),
