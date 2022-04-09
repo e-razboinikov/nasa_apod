@@ -12,17 +12,20 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
   late Emitter emitItem;
 
   ApodBloc({required this.apodUseCases}) : super(const InitialApodState()) {
-    on<ApodEvent>((event, emit) async {
-      emitItem = emit;
-      await event.map(
-        loadApod: _loadApod,
-        loadRandomApod: _loadRandomApod,
-      );
-    });
+    on<ApodEvent>(
+      (event, emit) async {
+        emitItem = emit;
+        await event.map(
+          loadApod: _loadApod,
+          loadRandomApod: _loadRandomApod,
+        );
+      },
+    );
   }
 
   Future<void> _loadApod(LoadApodEvent event) async {
     emitItem(const LoadingApodState());
+
     try {
       final apod = await apodUseCases.getApod(date: event.date);
       emitItem(LoadedApodState(apod: apod));
@@ -33,11 +36,14 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
 
   Future<void> _loadRandomApod(LoadRandomApodEvent event) async {
     emitItem(const LoadingApodState());
+
     try {
       final apod = await apodUseCases.getRandomApod();
       emitItem(LoadedApodState(apod: apod));
     } catch (e) {
-      emitItem(FailureApodState(errorMessage: e.toString()));
+      emitItem(
+        FailureApodState(errorMessage: e.toString()),
+      );
     }
   }
 }
