@@ -111,7 +111,9 @@ class _ApodPageState extends State<ApodPage> {
                 ],
               ),
             ),
-            failure: (state) => Center(child: Text(state.errorMessage)),
+            failure: (state) => Center(
+              child: Text(state.errorMessage),
+            ),
           ),
         ),
       ),
