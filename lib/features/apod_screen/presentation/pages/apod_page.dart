@@ -129,11 +129,13 @@ class _ApodPageState extends State<ApodPage> {
       initialDate: date,
       firstDate: DateTime.parse('1995-06-16'),
       lastDate: DateTime.now(),
-    ).then((value) {
-      if (value != null) {
-        context.read<ApodBloc>().add(LoadApodEvent(date: value));
-      }
-    });
+    ).then(
+      (value) {
+        if (value != null) {
+          context.read<ApodBloc>().add(LoadApodEvent(date: value));
+        }
+      },
+    );
   }
 
   void _swiping(DismissDirection direction) {
