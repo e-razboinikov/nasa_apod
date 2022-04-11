@@ -71,7 +71,7 @@ class _ApodPageState extends State<ApodPage> {
                     children: const [
                       Icon(Icons.arrow_upward_outlined, color: Colors.white),
                       SizedBox(width: 16.0),
-                      Text('Explanation')
+                      Text('Description')
                     ],
                   ),
                 ),
