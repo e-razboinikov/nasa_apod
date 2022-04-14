@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             headline5:
                 GoogleFonts.spaceGrotesk(fontSize: 18, color: Colors.white),
             bodyText2: GoogleFonts.spaceGrotesk(
-              wordSpacing: 10.0,
+              wordSpacing: 12,
               fontWeight: FontWeight.w200,
               fontSize: 18,
               color: Colors.white,
