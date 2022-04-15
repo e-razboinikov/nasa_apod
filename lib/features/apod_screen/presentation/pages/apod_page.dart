@@ -95,9 +95,10 @@ class _ApodPageState extends State<ApodPage> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 48),
                       child: Hero(
-                          transitionOnUserGestures: true,
-                          tag: 'apod',
-                          child: CustomImageLoader(imageUrl: state.apod.url)),
+                        transitionOnUserGestures: true,
+                        tag: 'apod',
+                        child: CustomImageLoader(imageUrl: state.apod.url),
+                      ),
                     ),
                   ),
                   Container(
