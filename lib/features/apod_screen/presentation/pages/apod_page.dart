@@ -135,7 +135,9 @@ class _ApodPageState extends State<ApodPage> {
     ).then(
       (value) {
         if (value != null) {
-          context.read<ApodBloc>().add(LoadApodEvent(date: value));
+          context.read<ApodBloc>().add(
+                LoadApodEvent(date: value),
+              );
         }
       },
     );
