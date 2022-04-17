@@ -7,7 +7,7 @@ import 'package:nasa_apod/features/apod_screen/data/data_sources/services/apod_s
 import 'package:nasa_apod/features/apod_screen/data/repositories/apod_repo_impl.dart';
 import 'package:nasa_apod/features/apod_screen/domain/use_cases/apod_use_cases.dart';
 import 'package:nasa_apod/features/apod_screen/presentation/bloc/apod_bloc.dart';
-import 'package:nasa_apod/features/splash/presentation/pages/splash_screen_page.dart';
+import 'package:nasa_apod/internal/routing/routing.dart';
 
 void main() => runApp(const MyApp());
 
@@ -28,9 +28,11 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: true,
         title: 'NASA APOD',
+        routeInformationParser: router.routeInformationParser,
+        routerDelegate: router.routerDelegate,
         theme: ThemeData(
           canvasColor: Colors.black,
           colorScheme: ColorScheme.fromSwatch().copyWith(
@@ -49,7 +51,6 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const SplashScreenPage(),
       ),
     );
   }
