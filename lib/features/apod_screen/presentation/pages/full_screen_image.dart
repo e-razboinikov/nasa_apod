@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nasa_apod/features/apod_screen/presentation/widgets/custom_image_loader.dart';
 
 class FullScreenImage extends StatelessWidget {
-  static const routeName = '/full-screen-image';
+  static const name = 'fullscreen-image';
 
   final String imageUrl;
 

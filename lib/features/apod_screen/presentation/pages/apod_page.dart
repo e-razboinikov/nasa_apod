@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:nasa_apod/features/apod_screen/presentation/bloc/apod_bloc.dart';
 import 'package:nasa_apod/features/apod_screen/presentation/pages/full_screen_image.dart';
@@ -7,6 +8,8 @@ import 'package:nasa_apod/features/apod_screen/presentation/widgets/custom_image
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ApodPage extends StatefulWidget {
+  static const name = '/apod';
+
   const ApodPage({Key? key}) : super(key: key);
 
   @override
@@ -24,96 +27,97 @@ class _ApodPageState extends State<ApodPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ApodBloc, ApodState>(
-      listener: (ctx, state) => state.maybeMap(
-        loaded: (state) => date = state.apod.date,
-        orElse: () => null,
-      ),
-      builder: (ctx, state) => Scaffold(
-        appBar: AppBar(
-          title: Text(
-            DateFormat('dd MMM yy').format(date),
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.change_circle_outlined),
-              onPressed: () =>
-                  context.read<ApodBloc>().add(const LoadRandomApodEvent()),
-            ),
-            IconButton(
-              onPressed: () => _showDatePicker(),
-              icon: const Icon(Icons.calendar_today_outlined),
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: BlocConsumer<ApodBloc, ApodState>(
+        listener: (ctx, state) => state.maybeMap(
+          loaded: (state) => date = state.apod.date,
+          orElse: () => null,
         ),
-        body: Dismissible(
-          key: ValueKey(
-            DateTime.now(),
+        builder: (ctx, state) => Scaffold(
+          appBar: AppBar(
+            title: Text(
+              DateFormat('dd MMM yy').format(date),
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.change_circle_outlined),
+                onPressed: () => context.read<ApodBloc>().add(
+                      const LoadRandomApodEvent(),
+                    ),
+              ),
+              IconButton(
+                onPressed: () => _showDatePicker(),
+                icon: const Icon(Icons.calendar_today_outlined),
+              ),
+            ],
           ),
-          direction: (date.day == DateTime.now().day)
-              ? DismissDirection.startToEnd
-              : DismissDirection.horizontal,
-          onDismissed: (direction) => _swiping(direction),
-          child: state.map(
-            initial: (state) => const Center(
-              child: CircularProgressIndicator.adaptive(),
+          body: Dismissible(
+            key: ValueKey(
+              DateTime.now(),
             ),
-            loading: (state) => const Center(
-              child: CircularProgressIndicator.adaptive(),
-            ),
-            loaded: (state) => SlidingUpPanel(
-              color: Colors.black,
-              collapsed: Container(
+            direction: (date.day == DateTime.now().day)
+                ? DismissDirection.startToEnd
+                : DismissDirection.horizontal,
+            onDismissed: (direction) => _swiping(direction),
+            child: state.map(
+              initial: (state) => const Center(
+                child: CircularProgressIndicator.adaptive(),
+              ),
+              loading: (state) => const Center(
+                child: CircularProgressIndicator.adaptive(),
+              ),
+              loaded: (state) => SlidingUpPanel(
                 color: Colors.black,
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.arrow_upward_outlined, color: Colors.white),
-                      SizedBox(width: 16.0),
-                      Text('Description')
-                    ],
-                  ),
-                ),
-              ),
-              panel: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
-                  child: Text(state.apod.explanation),
-                ),
-              ),
-              body: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (ctx) =>
-                            FullScreenImage(imageUrl: state.apod.url),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 48),
-                      child: Hero(
-                        transitionOnUserGestures: true,
-                        tag: 'apod',
-                        child: CustomImageLoader(imageUrl: state.apod.url),
-                      ),
+                collapsed: Container(
+                  color: Colors.black,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.arrow_upward_outlined, color: Colors.white),
+                        SizedBox(width: 16.0),
+                        Text('Description')
+                      ],
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    color: Colors.black54,
-                    width: double.infinity,
-                    child: Text(state.apod.title,
-                        style: Theme.of(context).textTheme.headline5,
-                        textAlign: TextAlign.end),
+                ),
+                panel: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
+                    child: Text(state.apod.explanation),
                   ),
-                ],
+                ),
+                body: Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: () => context.goNamed(
+                        FullScreenImage.name,
+                        extra: state.apod.url,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 48),
+                        child: Hero(
+                          transitionOnUserGestures: true,
+                          tag: 'apod',
+                          child: CustomImageLoader(imageUrl: state.apod.url),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      color: Colors.black54,
+                      width: double.infinity,
+                      child: Text(state.apod.title,
+                          style: Theme.of(context).textTheme.headline5,
+                          textAlign: TextAlign.end),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            failure: (state) => Center(
-              child: Text(state.errorMessage),
+              failure: (state) => Center(
+                child: Text(state.errorMessage),
+              ),
             ),
           ),
         ),
